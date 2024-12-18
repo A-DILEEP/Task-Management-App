@@ -1,0 +1,15 @@
+{
+  "name": "full-stack-app",
+  "version": "1.0.0",
+  "description": "Full Stack Task Management App",
+  "author": "Dileep",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-backend": "npm start --prefix backend",
+    "start-frontend": "npm start --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
