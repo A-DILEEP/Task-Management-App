@@ -9,22 +9,6 @@
     "start-backend": "npm start --prefix backend",
     "start-frontend": "npm start --prefix frontend"
   },
-  "dependencies": {
-    "axios": "^1.7.9",
-    "cra-template": "1.2.0",
-    "jwt-decode": "^4.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.0.2",
-    "react-scripts": "5.0.1",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.0"
-  },
   "devDependencies": {
     "concurrently": "^7.6.0"
   }
