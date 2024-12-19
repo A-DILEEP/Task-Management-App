@@ -7,7 +7,9 @@
   "scripts": {
     "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
     "start-backend": "npm start --prefix backend",
-    "start-frontend": "npm start --prefix frontend"
+    "start-frontend": "npm start --prefix frontend",
+    "deploy-frontend": "npm run deploy --prefix frontend",
+    "deploy-backend": "echo 'Deploy backend using Render or another service'"
   },
   "devDependencies": {
     "concurrently": "^7.6.0"
