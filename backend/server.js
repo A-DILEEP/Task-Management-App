@@ -8,8 +8,13 @@ import taskRoutes from "../backend/routes/taskRoutes.js";
 dotenv.config();
 
 const app = express();
+app.use(
+  cors({
+    origin: "https://task-management-app-six-ecru.vercel.app/", 
+    methods: "GET,POST,PUT,DELETE",
+  })
+);
 
-app.use(cors());
 app.use(bodyParser.json());
 
 
