@@ -7,7 +7,6 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch tasks from backend
   const fetchTasks = async () => {
     try {
       const response = await axios.get("/tasks");
@@ -18,7 +17,6 @@ const App = () => {
     }
   };
 
-  // Add a task
   const addTask = async (task) => {
     try {
       const response = await axios.post("/tasks", task);
@@ -28,7 +26,7 @@ const App = () => {
     }
   };
 
-  // Delete a task
+ 
   const deleteTask = async (id) => {
     try {
       await axios.delete(`/tasks/${id}`);
