@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
 import taskRoutes from "../backend/routes/taskRoutes.js";
+import cors from "cors";
 
 dotenv.config();
 
