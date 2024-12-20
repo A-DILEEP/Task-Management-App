@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: "https://task-management-app-six-ecru.vercel.app/", 
+    origin: "https://task-management-app-six-ecru.vercel.app", 
     methods: "GET,POST,PUT,DELETE",
   })
 );
