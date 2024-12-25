@@ -6,7 +6,9 @@ import axios from "./components/axios";
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editingTask, setEditingTask] = useState(null); // Track the task being edited
 
+  // Fetch tasks from the server
   const fetchTasks = async () => {
     try {
       const response = await axios.get("/tasks");
@@ -17,6 +19,7 @@ const App = () => {
     }
   };
 
+  // Add a new task
   const addTask = async (task) => {
     try {
       const response = await axios.post("/tasks", task);
@@ -26,7 +29,18 @@ const App = () => {
     }
   };
 
- 
+  // Update an existing task
+  const updateTask = async (task) => {
+    try {
+      const response = await axios.put(`/tasks/${task._id}`, task);
+      setTasks(tasks.map((t) => (t._id === task._id ? response.data : t)));
+      setEditingTask(null); // Reset the editing task
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
+  };
+
+  // Delete a task
   const deleteTask = async (id) => {
     try {
       await axios.delete(`/tasks/${id}`);
@@ -36,18 +50,27 @@ const App = () => {
     }
   };
 
+  // Set task to be edited
+  const editTask = (task) => {
+    setEditingTask(task); // Set task to be edited
+  };
+
   useEffect(() => {
-    fetchTasks();
+    fetchTasks(); // Fetch tasks on page load
   }, []);
 
   return (
     <div className="app">
       <h1 className="app-heading">Task Management</h1>
-      <TaskForm addTask={addTask} />
+      <TaskForm
+        addTask={addTask}
+        updateTask={updateTask}
+        editingTask={editingTask}
+      />
       {loading ? (
         <p>Loading tasks...</p>
       ) : (
-        <TaskList tasks={tasks} deleteTask={deleteTask} />
+        <TaskList tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
       )}
     </div>
   );

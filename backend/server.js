@@ -8,14 +8,24 @@ import taskRoutes from "../backend/routes/taskRoutes.js";
 dotenv.config();
 
 const app = express();
+const allowedOrigins = [
+  "https://task-management-app-six-ecru.vercel.app",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin:
-      "https://task-management-app-six-ecru.vercel.app" ||
-      "http://localhost:5000/api",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: "GET,POST,PUT,DELETE",
   })
 );
+
 
 app.use(bodyParser.json());
 

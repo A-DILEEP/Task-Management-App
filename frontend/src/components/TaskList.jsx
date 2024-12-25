@@ -1,6 +1,10 @@
 import React from "react";
-import '../index.css'
-const TaskList = ({ tasks, deleteTask }) => {
+import "../index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { format } from "date-fns";
+
+const TaskList = ({ tasks, deleteTask, editTask }) => {
   return (
     <div className="task-list">
       {tasks.length === 0 ? (
@@ -8,8 +12,20 @@ const TaskList = ({ tasks, deleteTask }) => {
       ) : (
         tasks.map((task) => (
           <div className="task-item" key={task._id}>
-            <p>{task.title}</p>
-            <button onClick={() => deleteTask(task._id)}>Delete</button>
+            <div className="task-info">
+              <p>{task.title}</p>
+              <small>
+                Created On:{format(new Date(task.createdAt), "P")}{" "}
+              </small>
+            </div>
+            <div className="task-actions">
+              <button onClick={() => editTask(task)}>
+                <FontAwesomeIcon icon={faEdit} /> Edit
+              </button>
+              <button onClick={() => deleteTask(task._id)}>
+                <FontAwesomeIcon icon={faTrash} /> Delete
+              </button>
+            </div>
           </div>
         ))
       )}
