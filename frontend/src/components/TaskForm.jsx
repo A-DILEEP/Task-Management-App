@@ -4,7 +4,6 @@ import "../index.css";
 const TaskForm = ({ addTask, updateTask, editingTask }) => {
   const [title, setTitle] = useState("");
 
-  // Effect to set the title when editing a task
   useEffect(() => {
     if (editingTask) {
       setTitle(editingTask.title);
@@ -18,12 +17,12 @@ const TaskForm = ({ addTask, updateTask, editingTask }) => {
     if (!title.trim()) return;
 
     if (editingTask) {
-      updateTask({ ...editingTask, title }); // Call updateTask for editing
+      updateTask({ ...editingTask, title }); 
     } else {
-      addTask({ title }); // Call addTask for adding new task
+      addTask({ title }); 
     }
 
-    setTitle(""); // Clear input after submission
+    setTitle(""); 
   };
 
   return (

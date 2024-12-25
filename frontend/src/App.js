@@ -6,9 +6,8 @@ import axios from "./components/axios";
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [editingTask, setEditingTask] = useState(null); // Track the task being edited
+  const [editingTask, setEditingTask] = useState(null);
 
-  // Fetch tasks from the server
   const fetchTasks = async () => {
     try {
       const response = await axios.get("/tasks");
@@ -19,7 +18,6 @@ const App = () => {
     }
   };
 
-  // Add a new task
   const addTask = async (task) => {
     try {
       const response = await axios.post("/tasks", task);
@@ -29,18 +27,18 @@ const App = () => {
     }
   };
 
-  // Update an existing task
+ 
   const updateTask = async (task) => {
     try {
       const response = await axios.put(`/tasks/${task._id}`, task);
       setTasks(tasks.map((t) => (t._id === task._id ? response.data : t)));
-      setEditingTask(null); // Reset the editing task
+      setEditingTask(null); 
     } catch (error) {
       console.error("Error updating task:", error);
     }
   };
 
-  // Delete a task
+ 
   const deleteTask = async (id) => {
     try {
       await axios.delete(`/tasks/${id}`);
@@ -50,13 +48,13 @@ const App = () => {
     }
   };
 
-  // Set task to be edited
+
   const editTask = (task) => {
-    setEditingTask(task); // Set task to be edited
+    setEditingTask(task); 
   };
 
   useEffect(() => {
-    fetchTasks(); // Fetch tasks on page load
+    fetchTasks(); 
   }, []);
 
   return (
