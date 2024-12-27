@@ -66,7 +66,7 @@ const App = () => {
         editingTask={editingTask}
       />
       {loading ? (
-        <p>Loading tasks...</p>
+        <p style={{color:"white"}}>Loading tasks...</p>
       ) : (
         <TaskList tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
       )}
